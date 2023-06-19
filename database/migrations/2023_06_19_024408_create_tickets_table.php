@@ -16,9 +16,9 @@ return new class extends Migration
             $table->foreignId('event_id')->constrained()->onDelete('cascade');
 
             $table->string('name');
-            $table->number('price')->default(0);
-            $table->number('quantity')->default(0);
-            $table->number('max_buy')->default(0);
+            $table->double('price')->default(0);
+            $table->integer('quantity')->default(0);
+            $table->integer('max_buy')->default(0);
 
             $table->softDeletes();
             $table->timestamps();

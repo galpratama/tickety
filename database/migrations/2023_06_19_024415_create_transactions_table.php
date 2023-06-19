@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('email');
             $table->string('status')->default('pending'); // pending, success, failed
 
-            $table->number('fee_price')->default(0);
-            $table->number('unique_price')->default(0);
-            $table->number('total_price')->default(0);
+            $table->double('fee_price')->default(0);
+            $table->integer('unique_price')->default(0);
+            $table->double('total_price')->default(0);
 
             $table->string('payment_method')->default('bank_transfer');
 

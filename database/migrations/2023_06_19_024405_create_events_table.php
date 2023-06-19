@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('type')->default('offline'); // online, offline
             $table->date('start_date')->nullable();
             $table->string('location')->nullable();
-            $table->number('duration')->nullable();
+            $table->integer('duration')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
