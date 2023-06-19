@@ -24,4 +24,9 @@ class Event extends Model
     protected $casts = [
         'start_date' => 'date',
     ];
+
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
 }
