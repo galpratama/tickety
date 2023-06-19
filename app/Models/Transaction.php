@@ -26,4 +26,9 @@ class Transaction extends Model
     {
         return $this->belongsTo(Event::class);
     }
+
+    public function transactionDetails()
+    {
+        return $this->hasMany(TransactionDetail::class);
+    }
 }
