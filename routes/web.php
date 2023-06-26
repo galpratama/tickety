@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\EventController as AdminEventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::resource('events', AdminEventController::class);
+    });
 });
