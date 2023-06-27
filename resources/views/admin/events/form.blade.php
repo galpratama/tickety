@@ -60,9 +60,22 @@
               <input type="number" name="duration" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5"
                      value="{{ isset($event) ? $event->duration : old('duration') }}">
             </div>
+            {{-- Categories --}}
+            <div class="mb-6">
+              <label for="category_id" class="block mb-2 text-sm">Kategori</label>
+              <select name="category_id" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5">
+                @foreach ($categories as $category)
+                  <option value="{{ $category->id }}"
+                          {{ isset($event) && $event->category_id == $category->id ? 'selected' : '' }}>
+                    {{ $category->name }}
+                  </option>
+                @endforeach
+              </select>
+            </div>
 
             <button type="submit" class="text-white bg-blue-700  rounded w-full sm:w-auto px-5 py-2.5 text-center">
-              Simpan</button>
+              Simpan
+            </button>
           </form>
 
         </div>

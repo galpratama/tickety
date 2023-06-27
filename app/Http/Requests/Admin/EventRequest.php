@@ -29,6 +29,7 @@ class EventRequest extends FormRequest
             'start_date' => 'required|date',
             'location' => 'required|string|max:255',
             'duration' => 'required|integer|min:1',
+            'category_id' => 'required|exists:categories,id'
         ];
 
         // If edit, remove required

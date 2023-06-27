@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\EventRequest;
+use App\Models\Category;
 use Illuminate\Contracts\View\View;
 
 class EventController extends Controller
@@ -27,7 +28,9 @@ class EventController extends Controller
      */
     public function create(): View
     {
-        return view('admin.events.form');
+        $categories = Category::all();
+
+        return view('admin.events.form', compact('categories'));
     }
 
     /**
@@ -60,7 +63,9 @@ class EventController extends Controller
      */
     public function edit(Event $event): View
     {
-        return view('admin.events.form', compact('event'));
+        $categories = Category::all();
+
+        return view('admin.events.form', compact('event', 'categories'));
     }
 
     /**

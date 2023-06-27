@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->integer('duration')->nullable();
 
+            $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
+
             $table->softDeletes();
             $table->timestamps();
         });
