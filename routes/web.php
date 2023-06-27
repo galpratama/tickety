@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\EventController as AdminEventController;
+use App\Http\Controllers\Admin\TicketController as AdminTicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,6 @@ Route::middleware([
 
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('events', AdminEventController::class);
+        Route::resource('events.tickets', AdminTicketController::class);
     });
 });

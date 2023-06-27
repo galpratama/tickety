@@ -1,15 +1,16 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="text-xl font-semibold leading-tight text-gray-800">
-      Event
+      Event &raquo; {{ $event->name }} &raquo; Ticket
     </h2>
   </x-slot>
 
   <div class="py-12">
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
       <div class="mb-10">
-        <a href="{{ route('admin.events.create') }}" class="px-4 py-2 font-bold text-white bg-green-500 rounded">
-          + Buat Event
+        <a href="{{ route('admin.events.tickets.create', $event->id) }}"
+           class="px-4 py-2 font-bold text-white bg-green-500 rounded">
+          + Buat Ticket
         </a>
       </div>
       <div class="overflow-hidden shadow sm:rounded-md">
@@ -24,31 +25,34 @@
               <tr>
                 <th style="max-width: 1%" class="px-6 py-3">ID</th>
                 <th class="px-6 py-3">Nama</th>
-                <th class="px-6 py-3">Tipe</th>
-                <th class="px-6 py-3">Tanggal</th>
-                <th class="px-6 py-3">Durasi</th>
+                <th class="px-6 py-3">Harga</th>
+                <th class="px-6 py-3">Qty</th>
+                <th class="px-6 py-3">Maks.</th>
                 <th style="max-width: 1%" class="px-6 py-3">Aksi</th>
               </tr>
             </thead>
             <tbody>
-              @foreach ($events as $event)
+              @foreach ($tickets as $ticket)
                 <tr class="border-b">
-                  <td class="px-6 py-4">{{ $event->id }}</td>
-                  <td class="px-6 py-4">{{ $event->name }}</td>
-                  <td class="px-6 py-4">{{ $event->type }}</td>
-                  <td class="px-6 py-4">{{ $event->start_date->format('d M Y') }}</td>
-                  <td class="px-6 py-4">{{ $event->duration }} hari</td>
+                  <td class="px-6 py-4">{{ $ticket->id }}</td>
+                  <td class="px-6 py-4">{{ $ticket->name }}</td>
+                  <td class="px-6 py-4">${{ number_format($ticket->price) }}</td>
+                  <td class="px-6 py-4">{{ number_format($ticket->quantity) }}</td>
+                  <td class="px-6 py-4">{{ number_format($ticket->max_buy) }}</td>
                   <td class="px-6 py-4">
-                    <a href="{{ route('admin.events.tickets.index', $event->id) }}"
-                       class="inline-block px-4 py-2 text-white bg-green-500 rounded">
-                      Tiket
-                    </a>
-                    <a href="{{ route('admin.events.edit', $event->id) }}"
+                    <a href="{{ route('admin.events.tickets.edit', [
+                        'event' => $event->id,
+                        'ticket' => $ticket->id,
+                    ]) }}"
                        class="inline-block px-4 py-2 text-white bg-blue-500 rounded">
                       Edit
                     </a>
-                    <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST" class="inline-block"
-                          onsubmit="return confirm('Hapus event {{ $event->name }}?')">
+                    <form action="{{ route('admin.events.tickets.destroy', [
+                        'event' => $event->id,
+                        'ticket' => $ticket->id,
+                    ]) }}"
+                          method="POST" class="inline-block"
+                          onsubmit="return confirm('Hapus ticket {{ $ticket->name }}?')">
                       @csrf
                       @method('DELETE')
                       <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded">
@@ -61,7 +65,7 @@
             </tbody>
           </table>
           <div class="mt-4">
-            {{ $events->links() }}
+            {{ $tickets->links() }}
           </div>
         </div>
       </div>
