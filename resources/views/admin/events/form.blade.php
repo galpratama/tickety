@@ -32,21 +32,21 @@
             @method(isset($event) ? 'PUT' : 'POST')
             <div class="mb-6">
               <label for="name" class="block mb-2 text-sm">Nama Event</label>
-              <input type="name" name="name" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5"
+              <input type="text" name="name" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5"
                      value="{{ isset($event) ? $event->name : old('name') }}">
             </div>
             <div class="mb-6">
               <label for="headline" class="block mb-2 text-sm">Headline</label>
-              <input type="headline" name="headline" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5"
+              <input type="text" name="headline" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5"
                      value="{{ isset($event) ? $event->headline : old('headline') }}">
             </div>
             <div class="mb-6">
               <label for="description" class="block mb-2 text-sm">Deskripsi</label>
-              <textarea type="description" name="description" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5">{{ isset($event) ? $event->description : old('description') }}</textarea>
+              <textarea name="description" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5">{{ isset($event) ? $event->description : old('description') }}</textarea>
             </div>
             <div class="mb-6">
               <label for="type" class="block mb-2 text-sm">Tipe</label>
-              <select type="type" name="type" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5">
+              <select type="text" name="type" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5">
                 <option value="online" {{ isset($event) && $event->type == 'online' ? 'selected' : '' }}>Online</option>
                 <option value="offline" {{ isset($event) && $event->type == 'offline' ? 'selected' : '' }}>Offline
                 </option>
@@ -60,7 +60,7 @@
             </div>
             <div class="mb-6">
               <label for="location" class="block mb-2 text-sm">Lokasi</label>
-              <input type="location" name="location" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5"
+              <input type="text" name="location" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5"
                      value="{{ isset($event) ? $event->location : old('location') }}">
             </div>
             <div class="mb-6">
