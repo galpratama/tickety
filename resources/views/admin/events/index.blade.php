@@ -24,7 +24,6 @@
               <tr>
                 <th style="max-width: 1%" class="px-6 py-3">ID</th>
                 <th class="px-6 py-3">Nama</th>
-                <th class="px-6 py-3">Tipe</th>
                 <th class="px-6 py-3">Tanggal</th>
                 <th class="px-6 py-3">Durasi</th>
                 <th style="max-width: 1%" class="px-6 py-3">Aksi</th>
@@ -35,7 +34,6 @@
                 <tr class="border-b">
                   <td class="px-6 py-4">{{ $event->id }}</td>
                   <td class="px-6 py-4">{{ $event->name }}</td>
-                  <td class="px-6 py-4">{{ $event->type }}</td>
                   <td class="px-6 py-4">{{ $event->start_date->format('d M Y') }}</td>
                   <td class="px-6 py-4">{{ $event->duration }} hari</td>
                   <td class="px-6 py-4">

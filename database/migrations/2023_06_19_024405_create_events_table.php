@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('headline')->nullable();
             $table->text('description')->nullable();
-            $table->string('type')->default('offline'); // online, offline
             $table->date('start_date')->nullable();
             $table->string('location')->nullable();
             $table->integer('duration')->nullable();

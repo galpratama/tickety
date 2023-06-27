@@ -26,7 +26,6 @@ class EventRequest extends FormRequest
             'name' => 'required|string|max:255|unique:events,name,',
             'headline' => 'required|string|max:255',
             'description' => 'required|string',
-            'type' => 'required|string|in:online,offline',
             'start_date' => 'required|date',
             'location' => 'required|string|max:255',
             'duration' => 'required|integer|min:1',

@@ -45,14 +45,6 @@
               <textarea name="description" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5">{{ isset($event) ? $event->description : old('description') }}</textarea>
             </div>
             <div class="mb-6">
-              <label for="type" class="block mb-2 text-sm">Tipe</label>
-              <select type="text" name="type" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5">
-                <option value="online" {{ isset($event) && $event->type == 'online' ? 'selected' : '' }}>Online</option>
-                <option value="offline" {{ isset($event) && $event->type == 'offline' ? 'selected' : '' }}>Offline
-                </option>
-              </select>
-            </div>
-            <div class="mb-6">
               <label for="start_date" class="block mb-2 text-sm">Tanggal Mulai</label>
               <input type="datetime-local" name="start_date"
                      class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5"

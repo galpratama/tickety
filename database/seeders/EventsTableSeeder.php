@@ -23,7 +23,6 @@ class EventsTableSeeder extends Seeder
                 'slug' => $faker->unique()->slug(),
                 'headline' => $faker->sentence,
                 'description' => $faker->paragraph,
-                'type' => $faker->randomElement(['online', 'offline']),
                 'start_date' => $faker->dateTimeBetween('+1 month', '+6 months'),
                 'location' => $faker->address,
                 'duration' => $faker->numberBetween(1, 10),
