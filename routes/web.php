@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\TicketController as AdminTicketController;
+use App\Http\Controllers\Admin\TransactionController as AdminTransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,8 @@ Route::middleware([
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('events', AdminEventController::class);
         Route::resource('events.tickets', AdminTicketController::class);
+        Route::resource('events.tickets', AdminTicketController::class);
+        Route::get('approve/{event}/{transaction}', [AdminTransactionController::class, 'approve'])->name('approve');
+        Route::resource('events.transactions', AdminTransactionController::class);
     });
 });

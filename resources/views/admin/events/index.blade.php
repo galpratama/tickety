@@ -43,6 +43,11 @@
                        class="inline-block px-4 py-2 text-white bg-green-500 rounded">
                       Tiket
                     </a>
+                    {{-- Transaksi --}}
+                    <a href="{{ route('admin.events.transactions.index', $event->id) }}"
+                       class="inline-block px-4 py-2 text-white bg-yellow-500 rounded">
+                      Transaksi
+                    </a>
                     <a href="{{ route('admin.events.edit', $event->id) }}"
                        class="inline-block px-4 py-2 text-white bg-blue-500 rounded">
                       Edit
