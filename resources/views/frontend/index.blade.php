@@ -33,8 +33,8 @@
     </section>
 
     {{-- Wavy line ornament --}}
-    <img src="{{ asset('assets/svgs/wavy-line-1.svg') }}"
-        class="absolute -z-10 left-1/2 -translate-x-1/2 md:top-[200px]" alt="tickety-assets">
+    <img src="{{ asset('assets/svgs/wavy-line-1.svg') }}" class="absolute -z-10 md:top-[160px] w-full"
+    alt="tickety-assets">
 
     <section id="eventSection" class="container relative max-w-screen-xl py-10">
         <!-- Section Header -->
@@ -78,7 +78,6 @@
         </div>
 
         <!-- Wavy line ornament -->
-        <img src="{{ asset('assets/svgs/wavy-line-2.svg') }}"
-            class="absolute -z-10 left-1/2 -translate-x-1/2 top-[250px]" alt="tickety-assets">
+        <img src="{{ asset('assets/svgs/wavy-line-2.svg') }}" class="absolute -z-10 top-[250px] w-full" alt="tickety-assets">
     </section>
 </x-frontend.layout>

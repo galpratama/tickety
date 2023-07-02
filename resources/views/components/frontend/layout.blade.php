@@ -16,7 +16,7 @@
 
         @stack('css')
     </head>
-    <body class="overflow-x-hidden">
+    <body>
 
         <x-frontend.navbar/>
 

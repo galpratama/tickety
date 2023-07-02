@@ -34,7 +34,7 @@
         </div>
     </section>
 
-    <section class="relative overflow-x-visible">
+    <section class="relative overflow-hidden">
         <div class="container relative max-w-screen-xl">
             <div id="galleryCarousel">
                 <img src="{{ asset('assets/images/gallery-1.webp') }}" class="w-[433px] h-[310px] rounded-2xl mr-[30px]"
@@ -53,10 +53,10 @@
                 <img src="{{ asset('assets/svgs/ic-left-rounded.svg') }}" alt="tickety-assets">
             </div>
         </div>
-        <!-- Wavy line ornament -->
-        <img src="{{ asset('assets/svgs/wavy-line-3.svg') }}"
-            class="absolute w-full -translate-x-1/2 -z-10 left-1/2 -top-20" alt="tickety-assets">
     </section>
+    <!-- Wavy line ornament -->
+    <img src="{{ asset('assets/svgs/wavy-line-3.svg') }}"
+        class="absolute w-full -z-10 top-[380px]" alt="tickety-assets">
 
     <section id="eventDescription" class="container max-w-screen-xl pt-[70px] relative pb-[156px]">
         <div class="flex flex-wrap items-start justify-between gap-y-[30px]">
