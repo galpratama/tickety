@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\TransactionController as AdminTransactionControll
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.index');
 });
 
 Route::middleware([
@@ -37,3 +37,7 @@ Route::middleware([
         Route::resource('events.transactions', AdminTransactionController::class);
     });
 });
+
+Route::view('/details', 'frontend.details')->name('detail');
+Route::view('/checkout', 'frontend.checkout')->name('checkout');
+Route::view('/checkout-success', 'frontend.checkout-success')->name('checkout-success');
