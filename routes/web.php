@@ -33,6 +33,7 @@ Route::middleware([
         Route::resource('events', AdminEventController::class);
         Route::resource('events.tickets', AdminTicketController::class);
         Route::resource('events.tickets', AdminTicketController::class);
+        Route::get('pdf/{event}/{transaction}', [AdminTransactionController::class, 'pdf'])->name('pdf');
         Route::get('approve/{event}/{transaction}', [AdminTransactionController::class, 'approve'])->name('approve');
         Route::resource('events.transactions', AdminTransactionController::class);
     });

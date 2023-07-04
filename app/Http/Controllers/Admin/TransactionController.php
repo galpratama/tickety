@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\TransactionRequest;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class TransactionController extends Controller
 {
@@ -88,5 +89,12 @@ class TransactionController extends Controller
 
         // Return to index
         return redirect()->route('admin.events.transactions.index', $event->id)->with('success', 'Transaction approved');
+    }
+
+    public function pdf(Event $event, Transaction $transaction)
+    {
+        $pdf = Pdf::loadView('pdf.ticket', compact('event', 'transaction'));
+
+        return $pdf->stream();
     }
 }

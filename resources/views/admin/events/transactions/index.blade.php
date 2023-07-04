@@ -50,20 +50,29 @@
                          class="block w-full px-4 py-2 text-center text-white bg-green-500 rounded">
                         Approve
                       </a>
+                      <form action="{{ route('admin.events.transactions.destroy', [
+                          'event' => $event->id,
+                          'transaction' => $transaction->id,
+                      ]) }}"
+                            method="POST" class="block"
+                            onsubmit="return confirm('Hapus transaction {{ $transaction->name }}?')">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="w-full px-4 py-2 text-center text-white bg-red-500 rounded">
+                          Hapus
+                        </button>
+                      </form>
                     @endif
 
-                    <form action="{{ route('admin.events.transactions.destroy', [
-                        'event' => $event->id,
-                        'transaction' => $transaction->id,
-                    ]) }}"
-                          method="POST" class="block"
-                          onsubmit="return confirm('Hapus transaction {{ $transaction->name }}?')">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="w-full px-4 py-2 text-center text-white bg-red-500 rounded">
-                        Hapus
-                      </button>
-                    </form>
+                    @if ($transaction->status == 'success')
+                      <a href="{{ route('admin.pdf', [
+                          'event' => $event->id,
+                          'transaction' => $transaction->id,
+                      ]) }}"
+                         class="block w-full px-4 py-2 text-center text-white bg-green-500 rounded">
+                        Download
+                      </a>
+                    @endif
                   </td>
                 </tr>
               @endforeach
