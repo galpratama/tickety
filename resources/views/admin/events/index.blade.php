@@ -35,7 +35,7 @@
                 <tr class="border-b">
                   <td class="px-6 py-4">{{ $event->id }}</td>
                   <td class="px-6 py-4">{{ $event->name }}</td>
-                  <td class="px-6 py-4">{{ $event->category->name }}</td>
+                  <td class="px-6 py-4">{{ $event->category?->name ?? '-' }}</td>
                   <td class="px-6 py-4">{{ $event->start_date->format('d M Y') }}</td>
                   <td class="px-6 py-4">{{ $event->duration }} hari</td>
                   <td class="px-6 py-4">
