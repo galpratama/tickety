@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Event;
+use App\Mail\TicketMail;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\TransactionRequest;
-use Barryvdh\DomPDF\Facade\Pdf;
 
 class TransactionController extends Controller
 {
@@ -83,9 +85,10 @@ class TransactionController extends Controller
         // Update transaction
         Transaction::find($id)->update(['status' => 'success']);
 
-        // TODO: Generate PDF
+        $transaction = Transaction::find($id);
 
-        // TODO: Send Email with PDF
+        // Send Email with PDF
+        Mail::to($transaction->email)->send(new TicketMail($event, $transaction));
 
         // Return to index
         return redirect()->route('admin.events.transactions.index', $event->id)->with('success', 'Transaction approved');

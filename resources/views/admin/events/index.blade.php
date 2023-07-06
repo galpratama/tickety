@@ -8,14 +8,14 @@
   <div class="py-12">
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
       <div class="mb-10">
-        <a href="{{ route('admin.events.create') }}" class="px-4 py-2 font-bold text-white bg-green-500 rounded">
+        <a href="{{ route('admin.events.create') }}" class="px-2 py-1 font-bold text-white bg-green-500 rounded">
           + Buat Event
         </a>
       </div>
       <div class="overflow-hidden shadow sm:rounded-md">
         <div class="px-4 py-5 bg-white sm:p-6">
           @if (session('success'))
-            <div class="px-4 py-2 mb-4 text-white bg-green-500 rounded">
+            <div class="px-2 py-1 mb-4 text-white bg-green-500 rounded">
               {{ session('success') }}
             </div>
           @endif
@@ -38,25 +38,25 @@
                   <td class="px-6 py-4">{{ $event->category?->name ?? '-' }}</td>
                   <td class="px-6 py-4">{{ $event->start_date->format('d M Y') }}</td>
                   <td class="px-6 py-4">{{ $event->duration }} hari</td>
-                  <td class="px-6 py-4">
+                  <td class="px-6 py-4 space-y-1 text-center">
                     <a href="{{ route('admin.events.tickets.index', $event->id) }}"
-                       class="inline-block px-4 py-2 text-white bg-green-500 rounded">
+                       class="block px-2 py-1 text-white bg-green-500 rounded">
                       Tiket
                     </a>
                     {{-- Transaksi --}}
                     <a href="{{ route('admin.events.transactions.index', $event->id) }}"
-                       class="inline-block px-4 py-2 text-white bg-yellow-500 rounded">
+                       class="block px-2 py-1 text-white bg-yellow-500 rounded">
                       Transaksi
                     </a>
                     <a href="{{ route('admin.events.edit', $event->id) }}"
-                       class="inline-block px-4 py-2 text-white bg-blue-500 rounded">
+                       class="block px-2 py-1 text-white bg-blue-500 rounded">
                       Edit
                     </a>
-                    <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST" class="inline-block"
+                    <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST" class="block"
                           onsubmit="return confirm('Hapus event {{ $event->name }}?')">
                       @csrf
                       @method('DELETE')
-                      <button type="submit" class="px-4 py-2 text-white bg-red-500 rounded">
+                      <button type="submit" class="w-full px-2 py-1 text-white bg-red-500 rounded">
                         Hapus
                       </button>
                     </form>

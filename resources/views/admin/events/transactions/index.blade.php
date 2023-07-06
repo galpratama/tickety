@@ -42,14 +42,14 @@
                     </ol>
                   </td>
                   <td class="px-6 py-4 space-y-1 text-sm">
+                    <a href="{{ route('admin.approve', [
+                        'event' => $event->id,
+                        'transaction' => $transaction->id,
+                    ]) }}"
+                       class="block w-full px-4 py-2 text-center text-white bg-green-500 rounded">
+                      Approve & Send
+                    </a>
                     @if ($transaction->status != 'success')
-                      <a href="{{ route('admin.approve', [
-                          'event' => $event->id,
-                          'transaction' => $transaction->id,
-                      ]) }}"
-                         class="block w-full px-4 py-2 text-center text-white bg-green-500 rounded">
-                        Approve
-                      </a>
                       <form action="{{ route('admin.events.transactions.destroy', [
                           'event' => $event->id,
                           'transaction' => $transaction->id,
