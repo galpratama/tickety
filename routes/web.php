@@ -30,8 +30,8 @@ Route::middleware([
     })->name('dashboard');
 
     Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('events/{event}/scan', [AdminEventController::class, 'scan'])->name('events.scan');
         Route::resource('events', AdminEventController::class);
-        Route::resource('events.tickets', AdminTicketController::class);
         Route::resource('events.tickets', AdminTicketController::class);
         Route::get('pdf/{event}/{transaction}', [AdminTransactionController::class, 'pdf'])->name('pdf');
         Route::get('approve/{event}/{transaction}', [AdminTransactionController::class, 'approve'])->name('approve');

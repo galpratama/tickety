@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\EventRequest;
 use App\Models\Category;
+use App\Models\TransactionDetail;
 use Illuminate\Contracts\View\View;
 
 class EventController extends Controller
@@ -95,5 +96,30 @@ class EventController extends Controller
 
         // Return to index
         return redirect()->route('admin.events.index')->with('success', 'Event deleted');
+    }
+
+    public function scan(Event $event): View
+    {
+        return view('admin.events.scan', compact('event'));
+    }
+
+    public function scanAPI(Event $event)
+    {
+        request()->validate([
+            'code' => 'required|exists:transaction_details,code',
+        ]);
+
+        $transactionDetail = TransactionDetail::where('code', request()->code)->first();
+
+        if ($transactionDetail) {
+            $transactionDetail->update([
+                'is_redeemed' => true,
+            ]);
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Check in success',
+            ]);
+        }
     }
 }

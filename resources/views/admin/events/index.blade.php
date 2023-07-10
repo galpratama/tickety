@@ -48,6 +48,11 @@
                        class="block px-2 py-1 text-white bg-yellow-500 rounded">
                       Transaksi
                     </a>
+                    {{-- Scan --}}
+                    <a href="{{ route('admin.events.scan', $event->id) }}"
+                       class="block px-2 py-1 text-white bg-purple-500 rounded">
+                      Scan
+                    </a>
                     <a href="{{ route('admin.events.edit', $event->id) }}"
                        class="block px-2 py-1 text-white bg-blue-500 rounded">
                       Edit
