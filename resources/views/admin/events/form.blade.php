@@ -45,10 +45,10 @@
               <textarea name="description" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5">{{ isset($event) ? $event->description : old('description') }}</textarea>
             </div>
             <div class="mb-6">
-              <label for="start_date" class="block mb-2 text-sm">Tanggal Mulai</label>
-              <input type="datetime-local" name="start_date"
+              <label for="start_time" class="block mb-2 text-sm">Tanggal Mulai</label>
+              <input type="datetime-local" name="start_time"
                      class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5"
-                     value="{{ isset($event) ? $event->start_date : old('start_date') }}">
+                     value="{{ isset($event) ? $event->start_time : old('start_time') }}">
             </div>
             <div class="mb-6">
               <label for="location" class="block mb-2 text-sm">Lokasi</label>
@@ -56,7 +56,7 @@
                      value="{{ isset($event) ? $event->location : old('location') }}">
             </div>
             <div class="mb-6">
-              <label for="duration" class="block mb-2 text-sm">Durasi (hari)</label>
+              <label for="duration" class="block mb-2 text-sm">Durasi (jam)</label>
               <input type="number" name="duration" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5"
                      value="{{ isset($event) ? $event->duration : old('duration') }}">
             </div>
@@ -70,6 +70,18 @@
                     {{ $category->name }}
                   </option>
                 @endforeach
+              </select>
+            </div>
+            {{-- Type (online/offline) --}}
+            <div class="mb-6">
+              <label for="type" class="block mb-2 text-sm">Tipe</label>
+              <select name="type" class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5">
+                <option value="offline" {{ isset($event) && $event->type == 'offline' ? 'selected' : '' }}>
+                  Offline
+                </option>
+                <option value="online" {{ isset($event) && $event->type == 'online' ? 'selected' : '' }}>
+                  Online
+                </option>
               </select>
             </div>
             {{-- Photos (multiple) --}}

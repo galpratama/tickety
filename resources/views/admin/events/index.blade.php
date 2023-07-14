@@ -36,8 +36,8 @@
                   <td class="px-6 py-4">{{ $event->id }}</td>
                   <td class="px-6 py-4">{{ $event->name }}</td>
                   <td class="px-6 py-4">{{ $event->category?->name ?? '-' }}</td>
-                  <td class="px-6 py-4">{{ $event->start_date->format('d M Y') }}</td>
-                  <td class="px-6 py-4">{{ $event->duration }} hari</td>
+                  <td class="px-6 py-4">{{ $event->start_time->format('d M Y') }}</td>
+                  <td class="px-6 py-4">{{ $event->duration }} jam</td>
                   <td class="px-6 py-4 space-y-1 text-center">
                     <a href="{{ route('admin.events.tickets.index', $event->id) }}"
                        class="block px-2 py-1 text-white bg-green-500 rounded">

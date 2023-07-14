@@ -18,16 +18,18 @@ class Event extends Model
         'slug',
         'headline',
         'description',
-        'start_date',
+        'start_time',
         'location',
         'duration',
         'category_id',
+        'type',
         'photos',
         'is_popular',
     ];
 
     protected $casts = [
-        'start_date' => 'date',
+        'start_time' => 'datetime',
+        'photos' => 'array',
     ];
 
     /**
@@ -59,7 +61,7 @@ class Event extends Model
      */
     public function getThumbnailAttribute()
     {
-        $photos = json_decode($this->photos);
+        $photos = $this->photos;
 
         if ($photos && !empty($photos)) {
             return Storage::url($photos[0]);
@@ -81,6 +83,17 @@ class Event extends Model
      */
     public function scopeUpcoming($query)
     {
-        return $query->orderBy('start_date', 'asc')->where('start_date', '>=', now());
+        return $query->orderBy('start_time', 'asc')->where('start_time', '>=', now());
+    }
+
+    /**
+     * Scope a query to find event by slug.
+     */
+    public function scopeFetch($query, $slug)
+    {
+        return $query->with(['category', 'tickets'])
+            ->withCount('tickets')
+            ->where('slug', $slug)
+            ->firstOrFail();
     }
 }

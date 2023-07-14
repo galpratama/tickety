@@ -52,7 +52,7 @@
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-[30px]">
       @foreach ($events as $event)
-        <x-frontend.card-event :cover="$event->thumbnail" :title="$event->name" :category="$event->category->name" :date="$event->start_date" :price="$event->start_from"
+        <x-frontend.card-event :cover="$event->thumbnail" :title="$event->name" :category="$event->category->name" :date="$event->start_time" :price="$event->start_from"
                                :isPopular="$event->is_popular" :description="$event->headline" :route="route('detail', $event->slug)" />
       @endforeach
     </div>

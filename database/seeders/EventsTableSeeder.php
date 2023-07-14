@@ -29,10 +29,11 @@ class EventsTableSeeder extends Seeder
                 'slug' => $faker->unique()->slug(2),
                 'headline' => $faker->sentence(13),
                 'description' => $faker->paragraph,
-                'start_date' => $faker->dateTimeBetween('+1 month', '+6 months'),
+                'start_time' => $faker->dateTimeBetween('+1 month', '+6 months'),
                 'location' => $faker->address,
                 'duration' => $faker->numberBetween(1, 10),
                 'category_id' => $faker->numberBetween(1, 7),
+                'type' => $faker->randomElement(['online', 'offline']),
                 'is_popular' => $faker->boolean(20),
             ]);
 

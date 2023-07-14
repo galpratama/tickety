@@ -58,7 +58,7 @@ class EventController extends Controller
             }
 
             $request->merge([
-                'photos' => json_encode($photos),
+                'photos' => $photos,
             ]);
         }
 
@@ -111,7 +111,7 @@ class EventController extends Controller
             }
 
             $request->merge([
-                'photos' => json_encode($photos),
+                'photos' => $photos,
             ]);
         }
 

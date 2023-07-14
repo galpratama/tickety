@@ -18,10 +18,12 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('headline')->nullable();
             $table->text('description')->nullable();
-            $table->date('start_date')->nullable();
+            $table->dateTime('start_time')->nullable();
             $table->string('location')->nullable();
             $table->integer('duration')->nullable();
             $table->boolean('is_popular')->default(false);
+            $table->json('photos')->nullable();
+            $table->string('type')->default('offline');
 
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
 

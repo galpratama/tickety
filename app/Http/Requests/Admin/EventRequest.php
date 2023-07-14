@@ -26,10 +26,11 @@ class EventRequest extends FormRequest
             'name' => 'required|string|max:255|unique:events,name,',
             'headline' => 'required|string|max:255',
             'description' => 'required|string',
-            'start_date' => 'required|date',
+            'start_time' => 'required|date',
             'location' => 'required|string|max:255',
             'duration' => 'required|integer|min:1',
             'category_id' => 'required|exists:categories,id',
+            'type' => 'required|in:online,offline',
             'files' => 'required|array',
             'files.*' => 'image|max:2048',
             'is_popular' => 'boolean'
