@@ -78,6 +78,13 @@
               <input type="file" name="files[]" multiple
                      class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5">
             </div>
+            {{-- Is Popular --}}
+            <div class="mb-6">
+              <label for="is_popular" class="block mb-2 text-sm">Populer?</label>
+              <input type="checkbox" name="is_popular" value="1"
+                     class="bg-gray-50 border border-gray-300 rounded-lg p-2.5"
+                     {{ isset($event) && $event->is_popular ? 'checked' : '' }}>
+            </div>
 
             <button type="submit" class="text-white bg-blue-700  rounded w-full sm:w-auto px-5 py-2.5 text-center">
               Simpan

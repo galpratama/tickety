@@ -21,6 +21,7 @@ return new class extends Migration
             $table->date('start_date')->nullable();
             $table->string('location')->nullable();
             $table->integer('duration')->nullable();
+            $table->boolean('is_popular')->default(false);
 
             $table->foreignId('category_id')->nullable()->constrained('categories')->onDelete('set null');
 

@@ -44,6 +44,11 @@ class EventController extends Controller
             'slug' => Str::slug($request->name),
         ]);
 
+        // Handle is_popular checkbox
+        $request->merge([
+            'is_popular' => $request->has('is_popular') ? true : false,
+        ]);
+
         // Upload multiple photos
         if ($request->hasFile('files')) {
             $photos = [];
@@ -90,6 +95,11 @@ class EventController extends Controller
         // Create slug
         $request->merge([
             'slug' => Str::slug($request->name),
+        ]);
+
+        // Handle is_popular checkbox
+        $request->merge([
+            'is_popular' => $request->has('is_popular') ? true : false,
         ]);
 
         // Upload multiple photos if exist

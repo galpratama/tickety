@@ -33,6 +33,7 @@ class EventsTableSeeder extends Seeder
                 'location' => $faker->address,
                 'duration' => $faker->numberBetween(1, 10),
                 'category_id' => $faker->numberBetween(1, 7),
+                'is_popular' => $faker->boolean(20),
             ]);
 
             // Create tickets

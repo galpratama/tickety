@@ -23,6 +23,7 @@ class Event extends Model
         'duration',
         'category_id',
         'photos',
+        'is_popular',
     ];
 
     protected $casts = [

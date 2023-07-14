@@ -31,7 +31,8 @@ class EventRequest extends FormRequest
             'duration' => 'required|integer|min:1',
             'category_id' => 'required|exists:categories,id',
             'files' => 'required|array',
-            'files.*' => 'image|max:2048'
+            'files.*' => 'image|max:2048',
+            'is_popular' => 'boolean'
         ];
 
         // If edit, remove required
