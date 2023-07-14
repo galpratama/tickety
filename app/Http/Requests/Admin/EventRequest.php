@@ -29,12 +29,16 @@ class EventRequest extends FormRequest
             'start_date' => 'required|date',
             'location' => 'required|string|max:255',
             'duration' => 'required|integer|min:1',
-            'category_id' => 'required|exists:categories,id'
+            'category_id' => 'required|exists:categories,id',
+            'files' => 'required|array',
+            'files.*' => 'image|max:2048'
         ];
 
         // If edit, remove required
         if ($this->isMethod('put')) {
             $rules['name'] = 'string|max:255|unique:events,name,' . $this->route('event');
+            $rules['files'] = 'array';
+            $rules['files.*'] = 'image|max:2048';
         }
 
         return $rules;

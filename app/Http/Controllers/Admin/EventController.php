@@ -44,8 +44,21 @@ class EventController extends Controller
             'slug' => Str::slug($request->name),
         ]);
 
+        // Upload multiple photos
+        if ($request->hasFile('files')) {
+            $photos = [];
+
+            foreach ($request->file('files') as $file) {
+                $photos[] = $file->store('events', 'public');
+            }
+
+            $request->merge([
+                'photos' => json_encode($photos),
+            ]);
+        }
+
         // Create event
-        Event::create($request->all());
+        Event::create($request->except('files'));
 
         // Return to index
         return redirect()->route('admin.events.index')->with('success', 'Event created');
@@ -79,8 +92,21 @@ class EventController extends Controller
             'slug' => Str::slug($request->name),
         ]);
 
+        // Upload multiple photos if exist
+        if ($request->hasFile('files')) {
+            $photos = [];
+
+            foreach ($request->file('files') as $file) {
+                $photos[] = $file->store('events', 'public');
+            }
+
+            $request->merge([
+                'photos' => json_encode($photos),
+            ]);
+        }
+
         // Update event
-        Event::find($id)->update($request->all());
+        Event::find($id)->update($request->except('files'));
 
         // Return to index
         return redirect()->route('admin.events.index')->with('success', 'Event updated');

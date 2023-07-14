@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\TicketController as AdminTicketController;
 use App\Http\Controllers\Admin\TransactionController as AdminTransactionController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,10 @@ use App\Http\Controllers\Admin\TransactionController as AdminTransactionControll
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.index');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::view('/details/{slug}', 'frontend.details')->name('detail');
+Route::view('/checkout', 'frontend.checkout')->name('checkout');
+Route::view('/checkout-success', 'frontend.checkout-success')->name('checkout-success');
 
 Route::middleware([
     'auth:sanctum',
@@ -38,7 +40,3 @@ Route::middleware([
         Route::resource('events.transactions', AdminTransactionController::class);
     });
 });
-
-Route::view('/details', 'frontend.details')->name('detail');
-Route::view('/checkout', 'frontend.checkout')->name('checkout');
-Route::view('/checkout-success', 'frontend.checkout-success')->name('checkout-success');

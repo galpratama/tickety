@@ -72,6 +72,12 @@
                 @endforeach
               </select>
             </div>
+            {{-- Photos (multiple) --}}
+            <div class="mb-6">
+              <label for="files" class="block mb-2 text-sm">Foto</label>
+              <input type="file" name="files[]" multiple
+                     class="bg-gray-50 border border-gray-300 rounded-lg w-full p-2.5">
+            </div>
 
             <button type="submit" class="text-white bg-blue-700  rounded w-full sm:w-auto px-5 py-2.5 text-center">
               Simpan

@@ -22,4 +22,13 @@ class Category extends Model
     {
         return $this->hasMany(Event::class);
     }
+
+    /**
+     * Scope a query to sort by the number of events.
+     */
+
+    public function scopeSortByMostEvents($query)
+    {
+        return $query->withCount('events')->orderBy('events_count', 'desc');
+    }
 }

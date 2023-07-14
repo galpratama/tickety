@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table): void {
             $table->id();
+
             $table->string('name');
             $table->string('slug')->unique();
             $table->string('headline')->nullable();

@@ -13,17 +13,38 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        $categoryName = [
-            'Music',
-            'Workshop',
-            'Business',
-            'Food',
-            'Startup',
-            'Movies',
-            'Game',
+        $categories = [
+            [
+                'name' => 'Music',
+                'icon' => '/assets/svgs/ic-mic.svg',
+            ],
+            [
+                'name' => 'Workshop',
+                'icon' => null,
+            ],
+            [
+                'name' => 'Business',
+                'icon' => null,
+            ],
+            [
+                'name' => 'Food',
+                'icon' => null,
+            ],
+            [
+                'name' => 'Startup',
+                'icon' => '/assets/svgs/ic-chart-growth.svg',
+            ],
+            [
+                'name' => 'Movies',
+                'icon' => '/assets/svgs/ic-movie.svg',
+            ],
+            [
+                'name' => 'Game',
+                'icon' => '/assets/svgs/ic-console.svg',
+            ],
         ];
 
-        foreach ($categoryName as $name) {
+        foreach ($categories as $category) {
             Category::create([
                 'name' => $name,
             ]);
