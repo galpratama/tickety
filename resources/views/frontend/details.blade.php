@@ -1,5 +1,5 @@
 <x-frontend.layout>
-  @section('title', 'Design 101: Product Manager')
+  @section('title', $event->name)
 
   <section class="container relative max-w-screen-xl pt-10 overflow-hidden">
     <div class="flex items-center flex-wrap mb-[38px] justify-between gap-5">
