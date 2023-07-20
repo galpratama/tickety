@@ -11,7 +11,6 @@ use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\Admin\TransactionRequest;
 
 class TransactionController extends Controller
 {

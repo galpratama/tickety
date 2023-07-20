@@ -119,7 +119,7 @@
         </div>
       </div>
 
-      <form action="{{ route('checkout') }}" method="POST" enctype="multipart/form-data"
+      <form action="{{ route('checkout', $event->slug) }}" method="POST" enctype="multipart/form-data"
             class="bg-primary p-5 rounded-2xl flex flex-col gap-5 max-w-[380px] w-full md:-mt-[120px] z-10 relative">
         @csrf
         <p class="text-xl font-semibold">
