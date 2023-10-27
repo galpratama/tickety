@@ -35,14 +35,3 @@
     </div>
   </div>
 </nav>
-
-@push('scripts')
-  <script type="text/javascript">
-    $(() => {
-      $('#navbarToggler').on('click', function(e) {
-        let navigationMenu = $(this).attr('data-target')
-        $(navigationMenu).toggleClass('hidden')
-      })
-    })
-  </script>
-@endpush

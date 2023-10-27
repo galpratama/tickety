@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="scroll-smooth">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="shortcut icon" href="{{ asset('assets/svgs/logo-mark.svg') }}" type="image/x-icon">
 
-        <title>@yield('title') | {{ config('app.name', 'Tickety') }}</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <link rel="shortcut icon" href="{{ asset('assets/svgs/logo-mark.svg') }}" type="image/x-icon">
 
-        <!-- Scripts -->
-        @vite(['resources/css/frontend.css'])
+  <title>@yield('title') | {{ config('app.name', 'Tickety') }}</title>
 
-        <!-- Styles -->
-        @livewireStyles
+  <!-- Scripts -->
+  @vite(['resources/css/frontend.css'])
 
-        @stack('css')
-    </head>
-    <body>
+  <!-- Styles -->
+  @livewireStyles
 
-        <x-frontend.navbar/>
+  @stack('css')
+</head>
 
-        {{ $slot }}
+<body>
 
-        @livewireScripts
+  <x-frontend.navbar />
 
-        <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-        @stack('js')
-    </body>
+  {{ $slot }}
+
+  @livewireScripts
+
+  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+          integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+    $(() => {
+      $('#navbarToggler').on('click', function(e) {
+        let navigationMenu = $(this).attr('data-target')
+        $(navigationMenu).toggleClass('hidden')
+      })
+    })
+  </script>
+  @stack('js')
+
+</body>
+
 </html>
